@@ -1,0 +1,39 @@
+# --------------------------------------------------------------------------------------------------------------- #
+# The mappings to all blocks are defined here. The assumption is that the SQL column names are unique for all SQL #
+# statements. This can be achieved by using the "as" keyword in the SQL statement:                                #
+#        e.g. select NON_UNIQUE_NAME as UNIQUE_NAME_123, from My_Table where...                                   #
+# --------------------------------------------------------------------------------------------------------------- #
+
+
+# --------------------- #
+# Mappings to ZZA block #
+# --------------------- #
+Field1=ZZA.FirstName
+Field2=ZZA.Surname
+Field3=ZZA.DOB
+Field4=ZZA.Status
+
+# --------------------- #
+# Mappings to ZZB block #
+# --------------------- #
+here=ZZB.PolicyNo
+be=ZZB.Status
+dragons=ZZB.EndDate
+
+# --------------------------- #
+# Bliss Mappings to CL1 block #
+# --------------------------- #
+BlissPolicyNo=CL1.PolicyNo
+BlissClientName=CL1.ClientName
+BlissDateOfBirth=CL1.ClientDOB
+BlissStartDate=CL1.StartDate
+BlissStatus=CL1.Status
+
+# --------------------------- #
+# Compass Mappings to CL1 block #
+# --------------------------- #
+CompassMemberNo=CL1.PolicyNo
+CompassClientName=CL1.ClientName
+CompassDateOfBirth=CL1.ClientDOB
+CompassStartDate=CL1.StartDate
+CompassStatus=CL1.Status

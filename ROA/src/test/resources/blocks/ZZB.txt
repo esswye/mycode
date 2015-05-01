@@ -1,0 +1,8 @@
+# --------------------------------------------------------------------------------------------- #
+# Define the fields in the ZZB block. Blank lines and comments are ignored.                     #
+# The order that the fields are defined determines the order they will appear in the MQ string. #
+# --------------------------------------------------------------------------------------------- #
+
+PolicyNo
+Status
+EndDate

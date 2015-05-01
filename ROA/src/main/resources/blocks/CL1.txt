@@ -1,0 +1,11 @@
+# --------------------------------------------------------------------------------------------- #
+# Define the fields in the CL1 block. Blank lines and comments are ignored.                     #
+# The order that the fields are defined determines the order they will appear in the MQ string. #
+# --------------------------------------------------------------------------------------------- #
+
+PolicyNo
+ClientName
+ClientDOB
+StartDate
+Status
+
