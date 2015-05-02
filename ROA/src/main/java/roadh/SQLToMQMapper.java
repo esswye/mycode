@@ -5,36 +5,17 @@ import roadh.helpers.TextFileResourceReader;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * This class provides methods to take the result of a SQL call and map the details to an MQ string
  */
-public class SQLToMQMapper {
+class SQLToMQMapper {
 
 
     private static final String SQL_TO_MQ_MAPPING_RESOURCE = "mappings/SQLToMQMappings.txt";
-
-    /**
-     * Local class to hold block name and block field name values
-     */
-    private class MQMappings {
-        String blockName;
-        String fieldName;
-
-        public MQMappings(String blockName, String fieldName) {
-            if ("".equals(blockName.trim())) {
-                throw new RuntimeException("Block name cannot be blank");
-            }
-            if ("".equals(fieldName.trim())) {
-                throw new RuntimeException("Field name cannot be blank");
-            }
-            this.blockName = blockName;
-            this.fieldName = fieldName;
-        }
-    }
-
-    private Map<String, MQMappings> mappings = new TreeMap<String, MQMappings>();
+    private final Map<String, MQMappings> mappings = new TreeMap<String, MQMappings>();
 
     /**
      * Class constructor
@@ -64,7 +45,6 @@ public class SQLToMQMapper {
             }
         };
     }
-
 
     /**
      * Maps the data in the result set to the MQ definition.
@@ -98,6 +78,25 @@ public class SQLToMQMapper {
             throw new RuntimeException("No MQMapping found for [" + columnName + "]");
         }
         return mappings.get(columnName);
+    }
+
+    /**
+     * Local class to hold block name and block field name values
+     */
+    private class MQMappings {
+        String blockName;
+        String fieldName;
+
+        public MQMappings(String blockName, String fieldName) {
+            if ("".equals(blockName.trim())) {
+                throw new RuntimeException("Block name cannot be blank");
+            }
+            if ("".equals(fieldName.trim())) {
+                throw new RuntimeException("Field name cannot be blank");
+            }
+            this.blockName = blockName;
+            this.fieldName = fieldName;
+        }
     }
 
 }

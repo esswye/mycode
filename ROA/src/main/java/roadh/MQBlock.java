@@ -1,15 +1,14 @@
 package roadh;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-public class MQBlock {
+class MQBlock {
 
     private final String blockName;
 
     //A LinkedHashMap preserves the order of the fields.
-    private Map<String, String> fields = new LinkedHashMap<String, String>();
+    private final Map<String, String> fields = new LinkedHashMap<String, String>();
 
     /**
      * Constructor
@@ -63,7 +62,7 @@ public class MQBlock {
     /**
      * Returns the block as part of an MQ string
      *
-     * @return
+     * @return The block data in MQ format
      */
     public String asMQString() {
         StringBuilder sb = new StringBuilder();

@@ -4,11 +4,11 @@ import roadh.helpers.TextFileResourceReader;
 
 import java.util.*;
 
-public class MQDefinition {
+class MQDefinition {
 
-    public static final String EOM = "<EOM>";
+    private static final String EOM = "<EOM>";
 
-    private Map<String, Map<Integer, MQBlock>> blocks = new LinkedHashMap<String, Map<Integer, MQBlock>>();
+    private final Map<String, Map<Integer, MQBlock>> blocks = new LinkedHashMap<String, Map<Integer, MQBlock>>();
 
 
     /**
@@ -47,11 +47,10 @@ public class MQDefinition {
     /**
      * Defines the order in which we want the blocks to appear.
      *
-     * @param blockNameOrder
+     * @param blockNameOrder The order the blocks should appear in the MQ string.
      */
     public void defineBlockOrder(String[] blockNameOrder) {
         for (String blockName : blockNameOrder) {
-            MQBlock block = defineBlock(blockName);
             blocks.put(blockName, new TreeMap<Integer, MQBlock>());
         }
     }
@@ -60,7 +59,7 @@ public class MQDefinition {
      * Defines an MQ block by loading the associated resource file containing the list of block fields
      *
      * @param blockName Name of block to define.
-     * @return
+     * @return An MQBlock
      */
     MQBlock defineBlock(String blockName) {
         List<String> fieldNames = getBlockFields("blocks/" + blockName + ".txt");
@@ -74,7 +73,7 @@ public class MQDefinition {
      * Gets the list of fields for the specified block name
      *
      * @param blockName Name of the block.
-     * @return
+     * @return List of block fields.
      */
     private List<String> getBlockFields(String blockName) {
 

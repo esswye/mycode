@@ -28,8 +28,6 @@ public abstract class TextFileResourceReader {
      */
     public TextFileResourceReader(String resourceName, boolean trimLines, boolean ignoreEmptyLines, boolean ignoreComments) {
         processTextFile(resourceName, trimLines, ignoreEmptyLines, ignoreComments);
-
-
     }
 
     /**
@@ -48,7 +46,7 @@ public abstract class TextFileResourceReader {
             throw new RuntimeException("Resource " + resourceName + " not found. Make sure location, spelling and capitalisation is correct.");
         }
         File file = new File(resource.getFile());
-        Scanner scanner = null;
+        Scanner scanner;
         try {
             scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
@@ -94,17 +92,15 @@ public abstract class TextFileResourceReader {
      *
      * @param fullyProcessed True if the file is fully processed, false otherwise.
      */
-    protected void endOfFile(boolean fullyProcessed) {
+    void endOfFile(boolean fullyProcessed) {
         //Nothing to do by default
     }
-
-    ;
 
 
     /**
      * This method must be overridden and should return true if you want to process subsequent lines.
      *
-     * @param line
+     * @param line The text file line.
      */
     abstract public boolean processLine(String line);
 

@@ -12,19 +12,18 @@ import java.sql.Statement;
  */
 public class HSQLDBHelper {
 
-    private Connection connection;
+    private static final HSQLDBHelper ourInstance = new HSQLDBHelper();
     public Statement statement;
+    private Connection connection;
 
-    private static HSQLDBHelper ourInstance = new HSQLDBHelper();
+    private HSQLDBHelper() {
+    }
 
     public static HSQLDBHelper getInstance() {
         return ourInstance;
     }
 
-    private HSQLDBHelper() {
-    }
-
-    public void open(){
+    public void open() {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
             connection = DriverManager.getConnection("jdbc:hsqldb:mem:mydb", "SA", "");
@@ -54,7 +53,7 @@ public class HSQLDBHelper {
     /**
      * Closes the HSQLDB database
      */
-    public void close(){
+    public void close() {
         try {
             statement.execute("SHUTDOWN");
             connection.close();

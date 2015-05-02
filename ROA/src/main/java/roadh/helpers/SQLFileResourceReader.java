@@ -6,6 +6,7 @@ package roadh.helpers;
 public abstract class SQLFileResourceReader extends TextFileResourceReader {
 
     private StringBuilder sql;
+
     /**
      * Constructor method to load and process a SQL file resource. Lines will be trimmed, blank lines and comments will
      * be ignored.
@@ -61,6 +62,7 @@ public abstract class SQLFileResourceReader extends TextFileResourceReader {
      *
      * @param sqlStatement The sql statement.
      */
+    @SuppressWarnings("SameReturnValue")
     public abstract boolean processSQL(String sqlStatement);
 
 

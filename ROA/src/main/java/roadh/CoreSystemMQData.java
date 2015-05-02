@@ -2,7 +2,6 @@ package roadh;
 
 import roadh.helpers.SQLFileResourceReader;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,13 +10,13 @@ public class CoreSystemMQData {
 
     /**
      * Gets the MQ String from data in the core system.
+     *
      * @param policyNo Policy number - could be Bliss or Compass
-     * @return
+     * @return The MQ string
      */
     public String getMQString(final String policyNo, Statement statement) {
 
-        String coreSystemSQLS = "";
-        Connection connection;
+        String coreSystemSQLS;
         // If the policy number is 7 digits followed by a letter in the range A to J then it's a BLISS policy
         if (policyNo.matches("\\d{7}[A-J]")) {
             coreSystemSQLS = "db/Bliss.sql";
@@ -30,9 +29,10 @@ public class CoreSystemMQData {
 
     /**
      * Gets the MQ String by building it up based on the results of SQL calls the the relevant core system.
-     * @param policyNo The policy number
+     *
+     * @param policyNo                   The policy number
      * @param coreSystemSQLSResourceName The core system SQL resource name
-     * @param statement The statement used to access data from the core system DB
+     * @param statement                  The statement used to access data from the core system DB
      * @return The MQ string
      */
     private String getMQStringFromConnection(final String policyNo, final String coreSystemSQLSResourceName, final Statement statement) {
