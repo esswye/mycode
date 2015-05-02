@@ -1,5 +1,5 @@
 /*
-  We're defining two SQL statements here, rather then the single on that we used in teh Bliss.sql example.
+  We're defining two SQL statements here, rather than the single statement that we used in the Bliss.sql example.
  */
 
 
